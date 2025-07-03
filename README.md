@@ -33,8 +33,7 @@ The layout of this project mirrors the recommended directory organization shown 
     │   └── helper_functions.py
     └── visualization/
         ├── eda.py
-        ├── performance.py
-        └── visualize.py
+        └── performance.py
 ```
 
 `main.py` imports the modules inside `src/` and executes them to reproduce the analysis and results. Jupyter notebooks are provided only for prototyping and exploration—they are **not** meant to be the main entry point of the project.
