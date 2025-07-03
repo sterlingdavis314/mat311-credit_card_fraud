@@ -9,7 +9,7 @@ def split_dataset(
     train_frac: float = 0.6,
     val_frac: float = 0.2,
     test_frac: float = 0.2,
-    seed: int = 42,
+    seed: int = 123,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Split the DataFrame into train, validation and test sets."""
     if not abs(train_frac + val_frac + test_frac - 1.0) < 1e-8:
