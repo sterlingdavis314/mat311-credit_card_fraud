@@ -19,7 +19,8 @@ The layout of this project mirrors the recommended directory organization shown 
 │   └── credit_card_fraud_analysis.ipynb
 └── src/
     ├── data/
-    │   └── load_data.py
+    │   ├── load_data.py
+    │   └── preprocess.py
     ├── features/
     │   └── build_features.py
     ├── models/

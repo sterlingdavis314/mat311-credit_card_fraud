@@ -24,7 +24,7 @@ def plot_eda(df: pd.DataFrame) -> None:
 
 if __name__ == "__main__":
     from src.data.load_data import load_dataset
-    from src.features.build_features import clean_dataset
+    from src.data.preprocess import clean_dataset
 
     raw = load_dataset("data/raw/card_transdata.csv")
     clean = clean_dataset(raw)

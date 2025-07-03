@@ -43,7 +43,7 @@ def plot_performance_comparison(y_test, y_pred_baseline, y_pred_knn) -> None:
 
 if __name__ == "__main__":
     from src.data.load_data import load_dataset
-    from src.features.build_features import clean_dataset
+    from src.data.preprocess import clean_dataset
     from src.models.train_model import train_models
 
     raw = load_dataset("data/raw/card_transdata.csv")
