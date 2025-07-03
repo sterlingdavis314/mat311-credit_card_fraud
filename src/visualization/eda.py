@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_eda(df: pd.DataFrame) -> None:
-    """Create simple exploratory plots."""
+    """Create exploratory plots including bivariate views colored by fraud."""
     sns.countplot(x='fraud', data=df)
     plt.title('Fraud Class Distribution')
     plt.show()
@@ -19,6 +19,29 @@ def plot_eda(df: pd.DataFrame) -> None:
 
     sns.histplot(df['ratio_to_median_purchase_price'], bins=30)
     plt.title('Ratio to Median Purchase Price Distribution')
+    plt.show()
+
+    # Bivariate visualizations colored by fraud
+    sns.countplot(data=df, x='used_pin_number', hue='fraud', palette=['green', 'red'])
+    plt.title('Transactions with PIN vs Fraudulent Transactions')
+    plt.xlabel('Used PIN')
+    plt.ylabel('Count')
+    plt.legend(title='Fraud', labels=['Non-Fraudulent', 'Fraudulent'])
+    plt.show()
+
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(
+        data=df,
+        x='distance_from_home',
+        y='ratio_to_median_purchase_price',
+        hue='fraud',
+        palette={0: 'green', 1: 'red'},
+    )
+    plt.title(
+        'Fraudulent vs Non-Fraudulent: Distance from Home vs Ratio to Median Purchase Price'
+    )
+    plt.xlabel('Distance from Home')
+    plt.ylabel('Ratio to Median Purchase Price')
     plt.show()
 
 
