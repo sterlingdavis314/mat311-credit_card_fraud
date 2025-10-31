@@ -45,7 +45,8 @@ Some directories such as `data/external/`, `src/utils/` and `tests/` may be empt
 Install the dependencies and run the pipeline. You should use the versions of the dependencies as specified by the requirements file:
 
 ```bash
-conda create -n 'credit_fraud' --file requirements.txt
+conda create -n credit_fraud --file requirements.txt
+conda activate credit_fraud
 python main.py
 ```
 
