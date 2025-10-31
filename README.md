@@ -4,7 +4,7 @@ This repository is an example template that demonstrates how to structure a mach
 
 ## Purpose
 
-The layout of this project mirrors the recommended directory organization shown in **Figure&nbsp;1: Directory structure of project repository** from the assignment instructions. It can be used as a starting point for your own work or as a reference when showcasing your skills to potential employers. All code is well documented and grouped by task so you can easily build upon it.
+The layout of this project mirrors the recommended directory organization shown in the assignment instructions. It can be used as a starting point for your own work or as a reference when showcasing your skills to potential employers. All code is well documented and grouped by task so you can easily build upon it.
 
 ## Project layout
 
