@@ -4,7 +4,7 @@ This repository is an example template that demonstrates how to structure a mach
 
 ## Purpose
 
-The layout of this project mirrors the recommended directory organization shown in **Figure&nbsp;1: Directory structure of project repository** from the assignment instructions. It can be used as a starting point for your own work or as a reference when showcasing your skills to potential employers. All code is well documented and grouped by task so you can easily build upon it.
+The layout of this project mirrors the recommended directory organization shown in the assignment instructions. It can be used as a starting point for your own work or as a reference when showcasing your skills to potential employers. All code is well documented and grouped by task so you can easily build upon it.
 
 ## Project layout
 
@@ -42,10 +42,11 @@ Some directories such as `data/external/`, `src/utils/` and `tests/` may be empt
 
 ## Running the example
 
-Install the dependencies and run the pipeline:
+Install the dependencies and run the pipeline. You should use the versions of the dependencies as specified by the requirements file:
 
 ```bash
-pip install -r requirements.txt
+conda create -n credit_fraud --file requirements.txt
+conda activate credit_fraud
 python main.py
 ```
 
