@@ -12,10 +12,12 @@ from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import pandas as pd
+
 
 def main() -> None:
     print("---Loading data...")
-    raw_df = load_dataset("data/raw/card_transdata.csv")
+    raw_df = pd.read_csv("./data/raw/train.csv")
     
     # Print shape of the raw dataset
     print(f"Raw dataset shape: {raw_df.shape}")
@@ -25,8 +27,8 @@ def main() -> None:
 
     print(f"Cleaned dataset shape: {clean_df.shape}")
 
-    print("---Creating EDA visuals...")
-    plot_eda(clean_df)
+    # print("---Creating EDA visuals...")
+    # plot_eda(clean_df)
 
     print("---Splitting data...")
     X_train, X_val, X_test, y_train, y_val, y_test = split_data(clean_df)
