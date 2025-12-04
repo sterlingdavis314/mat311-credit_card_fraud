@@ -1,10 +1,10 @@
-# Credit Card Fraud Detection Example
+# MAT 311 Intro to Data Science Final Project Customer Churn Prediction
 
-This repository is an example template that demonstrates how to structure a machine learning project for reproducibility. It includes a minimal end-to-end workflow for detecting credit card fraud using scikit‑learn.
+This repository contains code relating my final project for class. This README file contains documentation relating to the purpose, the layout, and  running the project.
 
 ## Purpose
 
-The layout of this project mirrors the recommended directory organization shown in the assignment instructions. It can be used as a starting point for your own work or as a reference when showcasing your skills to potential employers. All code is well documented and grouped by task so you can easily build upon it.
+The purpose of this project is to build a simple model that determines whether a customer will churn or not based on the given dataset located inside `./data/raw/train.csv`. The datasets have been found under the kaggle competition and all submissions have been made through kaggle.
 
 ## Project layout
 
