@@ -5,18 +5,21 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_curve, roc_auc_score
 import matplotlib.pyplot as plt
 
+from .decision_tree_model import features
 
 def split_data(df: pd.DataFrame):
     """Split dataframe into train/validation/test sets."""
-    X = df.drop("fraud", axis=1)
-    y = df["fraud"]
+    prediction_column = "Churn"
+
+    X = df.drop(prediction_column, axis=1)
+    y = df[prediction_column]
     X_temp, X_test, y_temp, y_test = train_test_split(
         X, y, test_size=0.2, random_state=123, stratify=y
     )
     X_train, X_val, y_train, y_val = train_test_split(
         X_temp, y_temp, test_size=0.25, random_state=123, stratify=y_temp
     )
-    return X_train, X_val, X_test, y_train, y_val, y_test
+    return X_train[features], X_val[features], X_test[features], y_train, y_val, y_test
 
 
 def plot_roc_curve(y_true, y_score, label: str) -> float:
