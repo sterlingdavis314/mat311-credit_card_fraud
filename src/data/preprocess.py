@@ -34,7 +34,7 @@ if __name__ == "__main__":
     # Load the raw dataset
     raw = load_dataset("data/raw/card_transdata.csv")
     # Clean the dataset
-    cleaned = clean_dataset(raw)
+    cleaned = clean_data(raw)
     # Ensure the processed directory exists
     os.makedirs("data/processed", exist_ok=True)
     # Save the cleaned data
