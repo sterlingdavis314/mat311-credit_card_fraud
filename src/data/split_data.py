@@ -14,11 +14,11 @@ def split_dataset(
         raise ValueError("Fractions must sum to 1.0")
 
     train_df, temp_df = train_test_split(
-        df, train_size=train_frac, random_state=seed, stratify=df["fraud"]
+        df, train_size=train_frac, random_state=seed, stratify=df["Churn"]
     )
     val_size = val_frac / (val_frac + test_frac)
     val_df, test_df = train_test_split(
-        temp_df, test_size=1 - val_size, random_state=seed, stratify=temp_df["fraud"]
+        temp_df, test_size=1 - val_size, random_state=seed, stratify=temp_df["Churn"]
     )
 
     return train_df, val_df, test_df

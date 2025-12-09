@@ -15,22 +15,22 @@ The purpose of this project is to build a simple model that determines whether a
 ├── data/
 │   ├── processed/          # Created after running the pipeline
 │   └── raw/
-│       └── card_transdata.csv
+│       ├── test.csv
+│       └── train.csv
 ├── notebooks/
-│   └── credit_card_fraud_analysis.ipynb
+│   └── churn_pred.ipynb
 └── src/
     ├── data/
     │   ├── load_data.py
     │   ├── preprocess.py
     │   └── split_data.py
-    ├── features/
-    │   └── build_features.py
     ├── models/
     │   ├── train_model.py
     │   ├── dumb_model.py
+    │   ├── decision_tree_model.py
     │   └── knn_model.py
     ├── utils/
-    │   └── helper_functions.py
+    │   └── pandas_extensions.py
     └── visualization/
         ├── eda.py
         └── performance.py
@@ -45,8 +45,8 @@ Some directories such as `data/external/`, `src/utils/` and `tests/` may be empt
 Install the dependencies and run the pipeline. You should use the versions of the dependencies as specified by the requirements file:
 
 ```bash
-conda create -n credit_fraud --file requirements.txt
-conda activate credit_fraud
+conda create -n churn_pred --file requirements.txt
+conda activate churn_pred
 python main.py
 ```
 

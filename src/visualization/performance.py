@@ -34,7 +34,7 @@ def plot_performance_comparison(y_test, y_pred_baseline, y_pred_knn) -> None:
         recall_score(y_test, y_pred_knn),
         f1_score(y_test, y_pred_knn)
     ]
-    df = pd.DataFrame({'Metric': metrics, 'k-NN': knn_scores, 'Never Fraud': baseline_scores})
+    df = pd.DataFrame({'Metric': metrics, 'k-NN': knn_scores, 'Never Churn': baseline_scores})
     df.plot(x='Metric', kind='bar', figsize=(8, 5))
     plt.ylim(0, 1)
     plt.title('Model Performance Comparison')
