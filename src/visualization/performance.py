@@ -3,17 +3,18 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
 
-
-def plot_confusion_matrices(y_test, y_pred_baseline, y_pred_knn) -> None:
+def plot_confusion_matrices(y_test, model_preds) -> None:
     """Plot confusion matrices for both models."""
-    conf_baseline = confusion_matrix(y_test, y_pred_baseline)
-    conf_knn = confusion_matrix(y_test, y_pred_knn)
+    # conf_baseline = confusion_matrix(y_test, y_pred_baseline)
+    # conf_knn = confusion_matrix(y_test, y_pred_knn)
 
-    fig, axes = plt.subplots(1, 2, figsize=(10, 4))
-    sns.heatmap(conf_baseline, annot=True, fmt='d', cmap='Reds', ax=axes[0])
-    axes[0].set_title('Never Fraud')
-    sns.heatmap(conf_knn, annot=True, fmt='d', cmap='Blues', ax=axes[1])
-    axes[1].set_title('3-NN')
+    fig, axes = plt.subplots(1, len(model_preds), figsize=(10, 4))
+    for i, model in enumerate(model_preds):
+
+        sns.heatmap(confusion_matrix(y_test, model["actual"]), annot=True, fmt='d', cmap=model["color"], ax=axes[i])
+        axes[i].set_title(model["name"])
+    # sns.heatmap(conf_knn, annot=True, fmt='d', cmap='Blues', ax=axes[1])
+    # axes[1].set_title('3-NN')
     plt.tight_layout()
     plt.show()
 

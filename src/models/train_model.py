@@ -2,6 +2,7 @@
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn import metrics
 from sklearn.metrics import roc_curve, roc_auc_score
 import matplotlib.pyplot as plt
 
@@ -37,14 +38,42 @@ def plot_roc_curve(y_true, y_score, label: str) -> float:
     plt.show()
     return auc
 
+def plot_all_roc_curve(X_test, y_test, models):
+    """Plot a ROC curve and return the AUC."""
+    plt.figure()
+    plt.xlabel("False Positive Rate")
+    plt.ylabel("True Positive Rate")
+    plt.title(f"ROC Curve - {"All Models"}")
 
-if __name__ == "__main__":
-    from src.data.load_data import load_dataset
-    from src.data.preprocess import clean_dataset
+    for model in models:
+        test_prob = model["model"].predict_proba(X_test)[:, 1]
+        fpr, tpr, _ = roc_curve(y_test, test_prob)
+        auc = roc_auc_score(y_test, test_prob)
+        plt.plot(fpr, tpr, label=f"{model["name"]}: AUC = {auc:.3f}")
+        plt.plot([0, 1], [0, 1], "--", color=model["color"][:-1].lower())
 
-    raw = load_dataset("data/raw/card_transdata.csv")
-    clean = clean_dataset(raw)
-    X_train, X_val, X_test, y_train, y_val, y_test = split_data(clean)
-    print("Train size:", X_train.shape)
-    print("Validation size:", X_val.shape)
-    print("Test size:", X_test.shape)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+def output_metrics(X_test, y_test, models):
+    """
+    Output the metrics for each model.
+    """
+    print(X_test, y_test)
+    for model in models:
+        test_prob = model["model"].predict(X_test)
+        accuracy = metrics.accuracy_score(y_test, test_prob)
+        recall = metrics.recall_score(y_test, test_prob)
+        precision = metrics.precision_score(y_test, test_prob)
+        [[TN, FP], _] = metrics.confusion_matrix(y_test, test_prob) 
+        specificity = TN / (TN + FP)
+        f1_score = metrics.f1_score(y_test, test_prob)
+
+        print(f"---------{model["name"]}---------")
+        print("---------Testing performance---------")
+        print(f"{accuracy=}")
+        print(f"{recall=}")
+        print(f"{precision=}")
+        print(f"{specificity=}")
+        print(f"{f1_score=}")

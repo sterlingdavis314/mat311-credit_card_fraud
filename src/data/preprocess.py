@@ -1,9 +1,9 @@
 import os
 import pandas as pd
 import numpy as np
-from .load_data import load_dataset
 
 from ..utils.pandas_extensions import replace_known_zero, one_hot_encoding
+from ..models.decision_tree_model import columns_to_encode, columns_to_zero_set, columns_to_parse_as_dates
 
 def clean_data(dataframe: pd.DataFrame, drop: bool = True, encode_attr: dict = {}, replace_attr: list[str] = [], date_cols: list[str] = []) -> pd.DataFrame:
     processed_data = dataframe.copy() 
@@ -32,12 +32,12 @@ def clean_data(dataframe: pd.DataFrame, drop: bool = True, encode_attr: dict = {
 
 if __name__ == "__main__":
     # Load the raw dataset
-    raw = load_dataset("data/raw/card_transdata.csv")
+    raw = pd.read_csv("data/raw/train.csv")
     # Clean the dataset
-    cleaned = clean_data(raw)
+    cleaned = clean_data(raw, encode_attr=columns_to_encode, replace_attr=columns_to_zero_set, date_cols=columns_to_parse_as_dates)
     # Ensure the processed directory exists
     os.makedirs("data/processed", exist_ok=True)
     # Save the cleaned data
-    processed_path = "data/processed/card_transdata_clean.csv"
+    processed_path = "data/processed/train_clean.csv"
     cleaned.to_csv(processed_path, index=False)
     print(f"Cleaned data saved to {processed_path}")

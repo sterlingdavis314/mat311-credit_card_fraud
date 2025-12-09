@@ -1,8 +1,6 @@
 import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from .load_data import load_dataset
-
 
 def split_dataset(
     df: pd.DataFrame,
@@ -24,17 +22,3 @@ def split_dataset(
     )
 
     return train_df, val_df, test_df
-
-
-if __name__ == "__main__":
-    cleaned_path = "data/processed/card_transdata_clean.csv"
-    df = load_dataset(cleaned_path)
-
-    train, val, test = split_dataset(df)
-
-    os.makedirs("data/processed", exist_ok=True)
-    train.to_csv("data/processed/card_transdata_train.csv", index=False)
-    val.to_csv("data/processed/card_transdata_validation.csv", index=False)
-    test.to_csv("data/processed/card_transdata_test.csv", index=False)
-
-    print("Train, validation, and test sets have been saved to data/processed/")
